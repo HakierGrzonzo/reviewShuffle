@@ -1,5 +1,6 @@
-import { json, LoaderFunction } from "@remix-run/cloudflare";
+import { json, LoaderFunction, MetaFunction } from "@remix-run/cloudflare";
 import { Link, useLoaderData } from "@remix-run/react";
+import { formatISO9075 } from "date-fns";
 import { useState } from "react";
 import PersonForm from "~/components/personForm";
 import { generateRandomSequence, getReviewYTD } from "~/utils";
@@ -22,6 +23,16 @@ export const loader: LoaderFunction = ({ request }) => {
   const reviewIndex = getReviewYTD();
   const sequence = generateRandomSequence(names, reviewIndex);
   return json({ reviewIndex, person: sequence.at(-1), names });
+};
+
+export const meta: MetaFunction = ({ data }) => {
+  const today = new Date();
+  return {
+    title: `It is ${data.person}`,
+    description: `For ${formatISO9075(today, {
+      representation: "date",
+    })}, the winner is ${data.person}`,
+  };
 };
 
 export default function Shuffle() {
