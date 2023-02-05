@@ -32,7 +32,7 @@ export default function PersonForm(props: PersonFormProps) {
                 style={{ display: "flex", alignItems: "baseline", gap: "5mm" }}
               >
                 <input
-                  placeholder="Name"
+                  placeholder="Volunteer name"
                   type="text"
                   name={`name-${index}`}
                   id={`name-${index}`}
@@ -56,10 +56,10 @@ export default function PersonForm(props: PersonFormProps) {
         )
       ) : (
         <div className="card-panel">
-          <p className="flex-text">
+          <p className="flow-text">
             Wait, there is noone to perform the review?
           </p>
-          <p className="flex-text">
+          <p className="flow-text">
             So who is clicking buttons on this computer?
           </p>
         </div>
