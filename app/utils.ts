@@ -23,9 +23,13 @@ export function getReviewYTD(): number {
   return Math.round(diffrence(startOfYear(new Date()), startOfToday()) / 2) + 1;
 }
 
-export function generateRandomSequence<T>(elements: T[], length: number): T[] {
+export function generateRandomSequence<T>(
+  elements: T[],
+  length: number,
+  seed: string
+): T[] {
   const result: T[] = [];
-  const rngGen = seedrandom("hello");
+  const rngGen = seedrandom(seed);
   while (result.length < length) {
     const newShuffle = shuffleArray(elements, rngGen);
     if (newShuffle.at(0) === result.at(-1)) {

@@ -5,7 +5,7 @@ import { useState } from "react";
 import PersonForm from "~/components/personForm";
 import { generateRandomSequence, getReviewYTD } from "~/utils";
 
-export const loader: LoaderFunction = ({ request }) => {
+export const loader: LoaderFunction = ({ request, context }) => {
   const url = new URL(request.url);
   const names = [...url.searchParams.entries()]
     .filter(([name, _]) => {
@@ -21,7 +21,7 @@ export const loader: LoaderFunction = ({ request }) => {
     .map(([_, name]) => name)
     .sort((a, b) => a.localeCompare(b));
   const reviewIndex = getReviewYTD();
-  const sequence = generateRandomSequence(names, reviewIndex);
+  const sequence = generateRandomSequence(names, reviewIndex, context.SEED);
   return json({ reviewIndex, person: sequence.at(-1), names });
 };
 
