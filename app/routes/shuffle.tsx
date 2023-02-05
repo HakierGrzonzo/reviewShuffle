@@ -29,9 +29,10 @@ export const meta: MetaFunction = ({ data }) => {
   const today = new Date();
   return {
     title: `It is ${data.person}`,
+    "og:title": "Review Shuffle",
     description: `For ${formatISO9075(today, {
       representation: "date",
-    })}, the winner is ${data.person}`,
+    })}, the winner is ${data.person}. Have a great review presentation!`,
   };
 };
 
