@@ -14,7 +14,7 @@ export const meta: MetaFunction = () => ({
   title: "Review Shuffle",
   "og:title": "Review Shuffle",
   viewport: "width=device-width,initial-scale=1",
-  "og:image": `https://reviewShuffle.grzegorzkoperwas.site${logo}`,
+  "og:image": `https://reviewShuffle.koperwas.org${logo}`,
 });
 
 export default function App() {
